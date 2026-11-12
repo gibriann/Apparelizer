@@ -161,7 +161,7 @@
 																	<div align="center" class="alignment" style="line-height: 10px">
 																		<img
 																			alt="Company Logo"
-																			src="{{ asset('images/firmos-logo.png') }}"
+																			src="{{ asset('images/apparelizer-logo.png') }}"
 																			style="
 																				display: block;
 																				height: auto;
@@ -880,7 +880,7 @@
 																			<tr>
 																				<td style="padding: 0 2px 0 2px">
 																					<a
-																						href="https://instagram.com/firmos_cv"
+																						href="https://instagram.com/apparelizer.id"
 																						target="_blank"
 																						><img
 																							alt="Instagram"

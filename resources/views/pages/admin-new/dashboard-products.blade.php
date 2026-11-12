@@ -9,7 +9,7 @@
     <!-- Page Heading -->
 
     <div class="text-dark mb-4">
-        <div class="h3">Produk Firmos</div>
+        <div class="h3">Produk Apparelizer</div>
         <p>Kepuasan pelanggan adalah kunci</p>
     </div>
 

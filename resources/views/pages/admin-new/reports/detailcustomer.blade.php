@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 	<title>Customer_{{$purchase->recipient}}_{{$purchase->code}}</title>
-	<link rel="shortcut icon" type="image/png" href="{{url('images/firmos-logo.png')}}"/>
+	<link rel="shortcut icon" type="image/png" href="{{url('images/apparelizer-logo.png')}}"/>
 	<style>
 		@page { margin: 0px; }
         body { margin: 0px; }
@@ -40,11 +40,11 @@
                 <tr>
                     <td width=100px>
                         <div>
-                            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/images/firmos-logo.png'))) }}" height="75">
+                            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/images/apparelizer-logo.png'))) }}" height="75">
                         </div>
                     </td>
                     <td style="vertical-align: middle">
-                        <font size=12pt><b>Firmos Store</b></font>
+                        <font size=12pt><b>Apparelizer</b></font>
                     </td>
                 </tr>
             </thead>
@@ -82,7 +82,7 @@
         <tr>
             <td width="100px">Dari</td>
             <td>
-                <b>Firmos Store</b>
+                <b>Apparelizer</b>
                 <br>
                 Jl. Letkol Isdiman No.103, Bancar, Kec. Purbalingga, Kabupaten Purbalingga, Jawa Tengah 53316
             </td>

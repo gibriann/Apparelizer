@@ -1,6 +1,6 @@
-# FirmosStore - Laravel 13
+# Apparelizer
 
-E-commerce application for custom apparel printing, migrated from Laravel 7 to Laravel 13.
+E-commerce application for custom apparel printing.
 
 ## Features
 
@@ -34,7 +34,7 @@ E-commerce application for custom apparel printing, migrated from Laravel 7 to L
 1. Clone the repository
 ```bash
 git clone <repository-url>
-cd FirmosStore-Laravel11
+cd Apparelizer
 ```
 
 2. Install dependencies
@@ -56,7 +56,7 @@ DB_CONNECTION=sqlite
 # DB_CONNECTION=mysql
 # DB_HOST=127.0.0.1
 # DB_PORT=3306
-# DB_DATABASE=firmosstore
+# DB_DATABASE=apparelizer
 # DB_USERNAME=root
 # DB_PASSWORD=
 
@@ -116,18 +116,6 @@ After seeding, you can login with:
 - Fly.io
 - Render.com
 - Traditional VPS with Docker
-
-## Migration Notes
-
-This project was migrated from Laravel 7 (2020) to Laravel 13 (2026) with the following changes:
-
-- Updated all dependencies to Laravel 13 compatible versions
-- Migrated routes from string-based to class-based syntax
-- Updated model namespaces from `App\` to `App\Models\`
-- Fixed middleware registration in `bootstrap/app.php`
-- Moved hardcoded API keys to environment variables
-- Updated all controllers to use proper model namespaces
-- Fixed database migrations and seeders structure
 
 ## License
 

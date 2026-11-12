@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 	<title>@yield('title')</title>
-	<link rel="shortcut icon" type="image/png" href="{{url('images/firmos-logo.png')}}"/>
+	<link rel="shortcut icon" type="image/png" href="{{url('images/apparelizer-logo.png')}}"/>
 	<style>
 		@page { margin: 0px; }
         body { margin: 0px; }
@@ -41,11 +41,11 @@
                 <tr>
                     <td width=100px>
                         <div style="margin-top: 10px">
-                            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/images/firmos-logo.png'))) }}" height="75">
+                            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/images/apparelizer-logo.png'))) }}" height="75">
                         </div>
                     </td>
                     <td style="vertical-align: middle">
-                        <font size=12pt><b>Firmos Store</b></font><br>
+                        <font size=12pt><b>Apparelizer</b></font><br>
                         <font size=10pt> Jl. Jenderal Sudirman No.184, Purbalingga, Jawa Tengah</font><br>
                         <font size=10pt> Telp. (0281) 896232 Fax. (0281) 894381</font><br>
                     </td>

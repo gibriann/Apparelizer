@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Firmos - Detail Produk
+    Apparelizer - Detail Produk
 @endsection
 
 @section('content')

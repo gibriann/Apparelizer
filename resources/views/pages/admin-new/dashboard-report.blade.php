@@ -9,7 +9,7 @@
     <!-- Page Heading -->
 
     <div class="text-dark mb-4">
-        <div class="h3">Laporan Penjualan Firmos</div>
+        <div class="h3">Laporan Penjualan Apparelizer</div>
         <p>Kepuasan pelanggan adalah kunci</p>
     </div>
     <!-- Content Row -->

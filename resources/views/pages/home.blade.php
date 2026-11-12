@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Firmos - Beranda
+    Apparelizer - Beranda
 @endsection
 
 @push('owlcarousel')
@@ -143,7 +143,7 @@
                 <div class="y-us-header text-center pt-3 pb-1">Lokasi Kami</div>
                 <div class="y-us-subheader text-center pb-3">Kamu bisa menemukan kami disini</div>
                 <div class="map ">
-                    <iframe class="" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d989.1620597681222!2d109.3711275!3d-7.3932549!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6559d39e448eef%3A0x522606c372d3656!2sFirmos%20Milk%20%26%20Coffee!5e0!3m2!1sid!2sid!4v1581867047081!5m2!1sid!2sid"  frameborder="0" style="border:0;" allowfullscreen="">
+                    <iframe class="" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d989.1620597681222!2d109.3711275!3d-7.3932549!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6559d39e448eef%3A0x522606c372d3656!2s!5e0!3m2!1sid!2sid!4v1581867047081!5m2!1sid!2sid"  frameborder="0" style="border:0;" allowfullscreen="">
                     </iframe>
                 </div>
             </div>
