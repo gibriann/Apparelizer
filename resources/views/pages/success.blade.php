@@ -1,7 +1,7 @@
 @extends('layouts.success')
 
 @section('title')
-    Firmos - Transaksi Sukses!
+    Apparelizer - Transaksi Sukses!
 @endsection
 
 @section('content')

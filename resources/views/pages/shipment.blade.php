@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Firmos - Pengiriman
+    Apparelizer - Pengiriman
 @endsection
 
 @push('fontawesome')

@@ -1,7 +1,7 @@
 @extends('layouts.success')
 
 @section('title')
-    Firmos - Registrasi Sukses!
+    Apparelizer - Registrasi Sukses!
 @endsection
 
 @section('content')

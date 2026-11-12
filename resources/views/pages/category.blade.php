@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Firmos - Beranda
+    Apparelizer - Beranda
 @endsection
 
 @section('content')

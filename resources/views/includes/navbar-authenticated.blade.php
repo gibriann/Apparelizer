@@ -4,7 +4,7 @@
 >
     <div class="container">
         <a href="/" class="navbar-brand">
-            <img src="/images/firmos-logo.png" alt="Logo" />
+            <img src="/images/apparelizer-logo.png" alt="Logo" />
         </a>
         <button
             class="navbar-toggler"

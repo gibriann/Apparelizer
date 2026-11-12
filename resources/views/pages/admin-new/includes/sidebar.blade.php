@@ -3,7 +3,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon">
-            <img src="{{asset('images/firmos-logo.png')}}" height="150px">
+            <img src="{{asset('images/apparelizer-logo.png')}}" height="150px">
         </div>
     </a>
 

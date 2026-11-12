@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Firmos - Keranjang
+    Apparelizer - Keranjang
 @endsection
 
 @push('fontawesome')

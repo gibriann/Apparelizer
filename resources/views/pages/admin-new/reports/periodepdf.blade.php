@@ -53,7 +53,7 @@
 <table width=100% cellpadding=4px>
     <tr>
         <td width=55%></td>
-        <td width=45%>Purbalingga, {{ \Carbon\Carbon::now()->translatedFormat("j F Y") }} <br> Pemilik Firmos Store</td>
+        <td width=45%>Purbalingga, {{ \Carbon\Carbon::now()->translatedFormat("j F Y") }} <br> Pemilik Apparelizer</td>
     </tr>
     <tr><td height="75px"></td></tr>
     <tr>
