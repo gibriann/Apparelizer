@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<title>Firmos - Konveksi Terbaikmu</title>
+
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+		<link href="style/main.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="page-dashboard">
+			<div class="d-flex" id="wrapper" data-aos="fade-right">
+				<!-- SIDEBAR -->
+				<div class="border-right" id="sidebar-wrapper">
+					<div class="sidebar-heading text-center">
+						<a href="/index.html" class="navbar-brand">
+							<img src="/images/successlogo.png" class="mr-1 my-4" alt="Logo" />
+						</a>
+					</div>
+					<div class="list-group list-group-flush">
+						<a href="/dashboard-account.html" class="list-group-item list-group-item-action"> Akun Saya </a>
+						<a href="/dashboard-account.html" class="list-group-item list-group-item-action"> Produk </a>
+						<a href="/dashboard-transactions.html" class="list-group-item list-group-item-action active"> Transaksi </a>
+						<a href="/dashboard-account.html" class="list-group-item list-group-item-action"> Laporan </a>
+						<a href="/index.html" class="list-group-item list-group-item-action"> Keluar </a>
+					</div>
+				</div>
+
+				<!-- PAGE CONTENT -->
+				<div id="page-content-wrapper">
+					<nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top" data-aos="fade-down">
+						<div class="container-fluid">
+							<button class="btn btn-secondary d-md-none mr-auto mr-2" id="menu-toggle">Menu &raquo;</button>
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<!-- Desktop Device -->
+								<ul class="navbar-nav d-none d-lg-flex ml-auto">
+									<li class="nav-item dropdown">
+										<a href="#" class="nav-link px-0" id="navbarDropdown" role="button" data-toggle="dropdown">
+											<img src="images/user-icon.jpg" alt="" class="rounded-circle mr-2 profile-picture" />
+											Hi, Gibrian!
+										</a>
+										<div class="dropdown-menu">
+											<a href="/dashboard.html" class="dropdown-item">Dasbor</a>
+											<a href="/dashboard-account.html" class="dropdown-item">Pengaturan</a>
+											<div class="dropdown-divider"></div>
+											<a href="/" class="dropdown-item">Keluar</a>
+										</div>
+									</li>
+									<li class="nav-item">
+										<a href="#" class="nav-link px-0 d-inline-block mt-2">
+											<img src="/images/icon-cart-filled.svg" alt="" />
+											<div class="cart-badge">3</div>
+										</a>
+									</li>
+								</ul>
+
+								<!-- Mobile Device -->
+								<ul class="navbar-nav d-block d-lg-none">
+									<li class="nav-item">
+										<a href="#" class="nav-link"> Hi, Gibrian </a>
+									</li>
+									<li class="nav-item">
+										<a href="#" class="nav-link d-inline-block"> Keranjang </a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+
+					<!-- Section Content -->
+					<div class="section-content section-dashboard-home" data-aos="fade-up">
+						<div class="container-fluid">
+							<div class="dashboard-heading">
+								<h2 class="dashboard-title">Daftar Transaksi</h2>
+								<p class="dashboard-subtitle">Pesanan-pesanan yang sudah kamu lakukan sejauh ini</p>
+							</div>
+							<div class="dashboard-content">
+								<div class="row mt-3">
+									<div class="col-12 col-lg-10 mt-2">
+										<a href="/dashboard-transaction-details" class="card card-list d-block">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-4">Hoodie, T-Shirt, Topi</div>
+													<div class="col-md-4">Rp 1.230.000</div>
+													<div class="col-md-3">12 Januari 2022</div>
+													<div class="col-md-1 d-none d-md-block text-right">
+														<img src="/images/dashboard-arrow-right.svg" alt="" />
+													</div>
+												</div>
+											</div>
+										</a>
+
+										<a href="/dashboard-transaction-details" class="card card-list d-block">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-4">Kemeja</div>
+													<div class="col-md-4">Rp 860.000</div>
+													<div class="col-md-3">12 Januari 2022</div>
+													<div class="col-md-1 d-none d-md-block text-right">
+														<img src="/images/dashboard-arrow-right.svg" alt="" />
+													</div>
+												</div>
+											</div>
+										</a>
+
+										<a href="/dashboard-transaction-details" class="card card-list d-block">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-4">T-Shirt, Kemeja</div>
+													<div class="col-md-4">Rp 665.000</div>
+													<div class="col-md-3">11 Januari 2022</div>
+													<div class="col-md-1 d-none d-md-block text-right">
+														<img src="/images/dashboard-arrow-right.svg" alt="" />
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/vendor/jquery/jquery.slim.min.js"></script>
+		<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>
+			AOS.init();
+		</script>
+		<script>
+			$("#menu-toggle").click(function (e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("toggled");
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,130 @@
+.avatar-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px;
+}
+
+.avatar-preview-frame {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.avatar-preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.avatar-dropzone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 6px 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 999px;
+  background-color: #fff;
+  color: #555;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.avatar-dropzone:hover,
+.avatar-dropzone:focus {
+  border-color: #ff7158;
+  background-color: rgba(255, 113, 88, 0.06);
+  color: #ff7158;
+  text-decoration: none;
+  outline: none;
+}
+
+.avatar-dropzone:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 113, 88, 0.2);
+}
+
+.avatar-dropzone i {
+  font-size: 11px;
+}
+
+.avatar-picker.is-dragover .avatar-dropzone {
+  border-color: #ff7158;
+  background-color: rgba(255, 113, 88, 0.1);
+  color: #ff7158;
+}
+
+.avatar-cropper {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 360px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #111;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.avatar-cropper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.avatar-cropper.is-dragging {
+  cursor: grabbing;
+}
+
+.avatar-cropper-image {
+  /* absolute, otherwise the script's left/top do nothing */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  max-width: none;
+  max-height: none;
+  transform-origin: center center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.avatar-cropper-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #fff;
+  font-size: 14px;
+  padding: 24px;
+  text-align: center;
+}
+
+@media (max-width: 575.98px) {
+  .avatar-cropper {
+    height: 280px;
+  }
+}
+
+.navbar-store .profile-picture,
+.img-profile {
+  object-fit: cover;
+  object-position: center;
+}
