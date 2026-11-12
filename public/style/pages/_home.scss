@@ -1,0 +1,181 @@
+.page-home {
+    h5 {
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+
+    .store-categories {
+        margin-top: 30px;
+    }
+
+    .store-products {
+        margin-top: 10px;
+    }
+
+    .prod-img {
+        width: 100%;
+        height: 25vh;
+        object-fit: contain;
+
+        @include media-breakpoint-down(md) {
+            opacity: 1 !important;
+            height: 30vh;
+            padding: 15px 0px;
+        }
+    }
+
+    .products-title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 36px;
+        color: #0c0d36;
+    }
+
+    .products-price {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #ff7158;
+    }
+
+    .card {
+        background-color: #f4f4f4;
+    }
+
+    .card-body {
+        padding: 0px 15px 15px 15px !important;
+    }
+
+    .card-body-yus {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 0px 15px 15px 15px !important;
+    }
+
+    .owl-prev,
+    .owl-next {
+        width: 15px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block !important;
+        border: 0px solid black;
+        font-size: 10px;
+    }
+    .owl-prev {
+        left: -20px;
+    }
+    .owl-next {
+        right: -20px;
+    }
+    .owl-prev i,
+    .owl-next i {
+        transform: scale(2, 5);
+        color: #ccc;
+    }
+    .y-us {
+        background: #f4f4f4 !important;
+        border-radius: 8px;
+        margin-top: 12px;
+    }
+
+    .y-us-header {
+        padding-top: 34px;
+        font-family: "Poppins";
+        font-weight: 600;
+        font-size: 28px;
+
+        @include media-breakpoint-down(md) {
+            font-size: 24px;
+        }
+    }
+
+    .y-us-subheader {
+        font-family: "Poppins";
+        font-size: 16px;
+        font-weight: 400;
+
+        @include media-breakpoint-down(md) {
+            font-size: 16px;
+        }
+    }
+
+    .y-us-title {
+        font-size: 14px;
+        font-family: "Roboto";
+        font-weight: 600;
+        color: #29a867;
+        padding-top: 18px;
+    }
+
+    .location {
+        justify-content: center;
+        background: #f4f4f4 !important;
+        border-radius: 8px;
+        margin-top: 12px;
+    }
+
+    .map {
+        width: 100%;
+        height: 50vh;
+        justify-content: center;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .y-us-subtext {
+        @include media-breakpoint-down(md) {
+            position: absolute;
+            left: -999em;
+        }
+    }
+
+    .conditioner {
+        position: relative;
+    }
+
+    .profile-img {
+        width: 100%;
+        height: 16vh;
+        opacity: 1;
+        display: block;
+        transition: 0.5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: 0.5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .conditioner:hover .image {
+        opacity: 0.3 !important;
+    }
+
+    .conditioner:hover .middle {
+        opacity: 1 !important;
+    }
+
+    .text {
+        color: #ff7158;
+        font-size: 14px;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    .card-white {
+        background-color: #fefefe;
+    }
+}

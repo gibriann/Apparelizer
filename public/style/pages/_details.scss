@@ -1,0 +1,193 @@
+.page-details {
+    h5 {
+        font-weight: normal;
+        font-size: 18px;
+        color: #0c0d36;
+    }
+
+    .main-content {
+        margin-top: 10px;
+        margin-bottom: 24px;
+
+        .main-image {
+            width: auto;
+            height: 350px;
+            margin-left: 40px;
+
+            @include media-breakpoint-down(md) {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            &:hover {
+                transform: scale(1.04);
+            }
+        }
+
+        h1 {
+            font-weight: 500;
+            font-size: 24px;
+            color: #0c0d36;
+            margin-bottom: 0;
+
+            @include media-breakpoint-down(md) {
+                font-weight: 400;
+                margin-top: 20px;
+            }
+        }
+
+        .price {
+            color: #ff7158;
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        textarea,
+        .custom-select {
+            &:hover {
+                border: 2px solid #ff7158;
+            }
+        }
+
+        .custom-select {
+            font-size: 14px;
+            background-color: #eeeeee;
+            border: none;
+            border-radius: 6px;
+        }
+
+        .btn-minus {
+            background-color: #cccccc;
+            border: none;
+            padding: 7px 13px;
+            border-radius: 5px 0px 0px 5px;
+        }
+        .btn-plus {
+            background-color: #cccccc;
+            border: none;
+            padding: 7px 13px;
+            border-radius: 0px 5px 5px 0px;
+        }
+
+        input[type="text"],
+        textarea {
+            font-size: 14px;
+            background-color: #eeeeee;
+            border: none;
+            border-radius: 6px;
+        }
+
+        /* Chrome, Safari, Edge, Opera */
+        .amount input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        .amount input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .btn-cart {
+            background-color: #ff7158;
+            &:hover {
+                img {
+                    transform: translate(2px) rotate(-0.02turn);
+                }
+            }
+        }
+
+        .btn-cart img {
+            width: 21px;
+            height: 20px;
+            margin-bottom: 2.5px;
+        }
+
+        .form-group {
+            margin: 8px;
+        }
+
+        .input-group {
+            padding-right: 0;
+        }
+
+        .cart {
+            padding-left: 6px;
+        }
+    }
+
+    .store-heading {
+        margin-bottom: 8px;
+
+        .price {
+            color: #ffa601;
+            margin-bottom: 10px;
+        }
+    }
+
+    .store-description {
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 150%;
+        color: #525252;
+
+        hr {
+            margin: 0px 0px 10px 0px;
+        }
+
+        .description-header {
+            padding: 14px 0px;
+            font-weight: 600;
+            font-size: 22px;
+            color: #03030e;
+
+            @include media-breakpoint-down(md) {
+                padding: 6px 0px;
+            }
+        }
+
+        .description {
+            font-weight: 400;
+            font-size: 16px;
+            color: #0c0d36;
+        }
+    }
+
+    .store-review {
+        .media {
+            img {
+                max-width: 48px;
+            }
+        }
+
+        .media-body {
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            color: #3b3b3b;
+            margin-bottom: 15px;
+        }
+
+        .review-header {
+            padding: 14px 0px;
+            font-weight: 600;
+            font-size: 22px;
+            color: #03030e;
+        }
+
+        .reviews {
+            font-weight: 400;
+            font-size: 16px;
+            color: #03030e;
+        }
+
+        hr {
+            margin: 0px 0px 5px 0px;
+        }
+    }
+
+    .amount-error {
+        border: 1px solid #dc3545;
+    }
+}
