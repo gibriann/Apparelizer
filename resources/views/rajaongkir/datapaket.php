@@ -5,7 +5,7 @@ $distrik = $_POST["distrik"];
 $berat = $_POST["berat"];
 $curl = curl_init();
 
-$origin = 37;//PURBALINGGA CITY, HARDCODED BECAUSE APPARELIZER IS IN PBG
+$origin = 17732;//JAKARTA TIMUR, MATCHES THE SHOP LOCATION
 curl_setopt_array($curl, array(
     CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
     CURLOPT_SSL_VERIFYHOST => 0,

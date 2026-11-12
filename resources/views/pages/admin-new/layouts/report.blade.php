@@ -46,8 +46,7 @@
                     </td>
                     <td style="vertical-align: middle">
                         <font size=12pt><b>Apparelizer</b></font><br>
-                        <font size=10pt> Jl. Jenderal Sudirman No.184, Purbalingga, Jawa Tengah</font><br>
-                        <font size=10pt> Telp. (0281) 896232 Fax. (0281) 894381</font><br>
+                        <font size=10pt> Jl. Galur Sari VIII, Utan Kayu Selatan, Matraman, Jakarta Timur 13120</font><br>
                     </td>
                 </tr>
             </thead>

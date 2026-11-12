@@ -143,8 +143,7 @@
                 <div class="y-us-header text-center pt-3 pb-1">Lokasi Kami</div>
                 <div class="y-us-subheader text-center pb-3">Kamu bisa menemukan kami disini</div>
                 <div class="map ">
-                    <iframe class="" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d989.1620597681222!2d109.3711275!3d-7.3932549!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6559d39e448eef%3A0x522606c372d3656!2s!5e0!3m2!1sid!2sid!4v1581867047081!5m2!1sid!2sid"  frameborder="0" style="border:0;" allowfullscreen="">
-                    </iframe>
+                    <iframe class="" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1458.7864352564022!2d106.86543734929592!3d-6.200392244930795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f48a028d24cf%3A0xe9a7c77b3c17570e!2sSekolah%20Dasar%20Negeri%20Utan%20Kayu%20Selatan%2021%20Pagi!5e0!3m2!1sid!2sid!4v1794525971291!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
         </div>

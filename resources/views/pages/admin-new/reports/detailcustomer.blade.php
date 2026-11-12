@@ -84,7 +84,7 @@
             <td>
                 <b>Apparelizer</b>
                 <br>
-                Jl. Letkol Isdiman No.103, Bancar, Kec. Purbalingga, Kabupaten Purbalingga, Jawa Tengah 53316
+                Jl. Galur Sari VIII, Utan Kayu Selatan, Kec. Matraman, Jakarta Timur 13120
             </td>
         </tr>
     </table>
