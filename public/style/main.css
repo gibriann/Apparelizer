@@ -10675,3 +10675,44 @@ footer p {
 [data-theme="dark"] .form-control[readonly] {
   background-color: #1a1d29 !important;
 }
+
+/* History page: card-list sets #0c0d36 which is invisible on dark cards */
+[data-theme="dark"] .card-list,
+[data-theme="dark"] .card-list .card-body {
+  color: #e8e9f0 !important;
+}
+
+[data-theme="dark"] .card-list small {
+  color: #9a9bb0 !important;
+}
+
+[data-theme="dark"] .card-list .text-secondary {
+  color: #9a9bb0 !important;
+}
+
+[data-theme="dark"] .dashboard-title {
+  color: #e8e9f0 !important;
+}
+
+[data-theme="dark"] .dashboard-subtitle {
+  color: #9a9bb0 !important;
+}
+
+/* the price column divider is near-white */
+[data-theme="dark"] .card-list .border-left {
+  border-left-color: #2c2f42 !important;
+}
+
+/* arrow svg is #D3D3D3, too light against the dark card */
+[data-theme="dark"] .card-list img[src*="dashboard-arrow-right"] {
+  filter: brightness(0) invert(1) opacity(0.55);
+}
+
+[data-theme="dark"] .card-list:hover img[src*="dashboard-arrow-right"] {
+  filter: brightness(0) saturate(100%) invert(62%) sepia(48%) saturate(1200%) hue-rotate(325deg) brightness(102%) contrast(96%);
+}
+
+/* badge-dark blends into the dark card background */
+[data-theme="dark"] .badge-dark {
+  background-color: #6b6d85 !important;
+}
