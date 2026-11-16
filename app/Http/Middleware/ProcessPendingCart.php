@@ -30,7 +30,7 @@ class ProcessPendingCart
             if ($existingCart) {
                 // Update existing cart
                 $existingCart->amount += $cartData['amount'];
-                $existingCart->link_design = $cartData['link_design'];
+                $existingCart->link_design = $cartData['link_design'] ?? null;
                 $existingCart->update();
             } else {
                 // Create new cart entry
@@ -38,11 +38,10 @@ class ProcessPendingCart
                     'user_id' => Auth::id(),
                     'product_id' => $cartData['product_id'],
                     'amount' => $cartData['amount'],
-                    'link_design' => $cartData['link_design'],
+                    'link_design' => $cartData['link_design'] ?? null,
                     'size_id' => $cartData['size_id'],
                     'color_id' => $cartData['color_id'],
                     'printing_id' => $cartData['printing_id'],
-                    'notes' => $cartData['notes']
                 ]);
             }
             

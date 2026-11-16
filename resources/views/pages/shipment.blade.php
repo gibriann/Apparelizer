@@ -391,7 +391,7 @@ $(document).ready(function() {
                     response.data.forEach(function(service) {
                         const serviceName = `${service.service} (${service.description})`;
                         const etd = service.etd || '-';
-                        html += `<option value="${service.cost}" data-service="${service.service}" data-etd="${etd}">
+                        html += `<option value="${service.service}" data-cost="${service.cost}" data-etd="${etd}">
                                     ${serviceName} - Rp ${formatNumber(service.cost)} (${etd} hari)
                                  </option>`;
                     });
@@ -410,16 +410,8 @@ $(document).ready(function() {
 
     // Update total when service is selected
     $('#service_name').on('change', function() {
-        const shippingCost = parseInt($(this).val()) || 0;
-        const etd = $(this).find(':selected').data('etd') || '-';
-        
-        // Store ETD in hidden field
-        $('<input>').attr({
-            type: 'hidden',
-            name: 'etd',
-            value: etd
-        }).appendTo('#checkoutForm');
-        
+        const shippingCost = parseInt($(this).find(':selected').data('cost')) || 0;
+
         updateShippingCost(shippingCost);
     });
 

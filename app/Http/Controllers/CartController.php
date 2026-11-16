@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use App\Models\Cart;
 use App\Models\Address;
@@ -77,6 +78,18 @@ class CartController extends Controller
 
     public function store(Request $request, $id, $slug)
     {
+        $request->validate([
+            'link_design' => ['required', 'url', 'starts_with:https://drive.google.com/'],
+            'size_id' => ['required', 'integer', 'exists:sizes,id'],
+            'color_id' => ['required', 'integer', 'exists:colors,id'],
+            'printing_id' => ['required', 'integer', 'exists:printing_types,id'],
+            'amount' => ['nullable', 'integer', 'min:1'],
+        ], [
+            'link_design.required' => 'Link desain wajib diisi',
+            'link_design.starts_with' => 'Hanya menerima link dari Google Drive',
+            'link_design.url' => 'Link desain harus berupa URL yang valid',
+        ]);
+
         // Check if user authenticated
         if (!auth()->check()) {
             // Store cart data in session
@@ -84,11 +97,10 @@ class CartController extends Controller
                 'product_id' => $id,
                 'slug' => $slug,
                 'amount' => $request->amount ?? 1,
-                'link_design' => $request->link_design ?? null,
+                'link_design' => $request->link_design,
                 'size_id' => $request->size_id,
                 'color_id' => $request->color_id,
                 'printing_id' => $request->printing_id,
-                'notes' => $request->notes ?? null
             ]]);
             
             Alert::info('Info', 'Silahkan login atau daftar untuk melanjutkan');
@@ -114,11 +126,10 @@ class CartController extends Controller
                 'user_id' => auth()->user()->id,
                 'product_id' => $id,
                 'amount' => $request->amount != null ? $request->amount : 1,
-                'link_design' => $request->link_design ?? null,
+                'link_design' => $request->link_design,
                 'size_id' => $request->size_id,
                 'color_id' => $request->color_id,
                 'printing_id' => $request->printing_id,
-                'notes' => $request->notes ? $request->notes : null
             ]);
         }
 
@@ -136,8 +147,12 @@ class CartController extends Controller
 
     public function storePayment(Request $request)
     {
-        $code = 'TRX-' . mt_rand(00000, 99999);
         $carts = Cart::where('user_id', Auth::user()->id)->get();
+
+        if ($carts->isEmpty()) {
+            Alert::error('Gagal', 'Keranjang kamu kosong');
+            return redirect('/products');
+        }
 
         $address = Address::where('user_id', Auth::user()->id)->find($request->address_id);
         if (!$address || !$address->rajaongkir_destination_id) {
@@ -145,48 +160,84 @@ class CartController extends Controller
             return redirect()->back();
         }
 
-        // Calculate total weight
+        // angka uang dihitung di server, jangan percaya request
+        $subtotal = 0;
         $total_weight = 0;
         foreach ($carts as $cart) {
+            $subtotal += $cart->products->product_price * $cart->amount;
             $total_weight += $cart->products->product_weight * $cart->amount;
         }
 
-        $purchase = Purchase::create([
-            'code' => $code,
-            'total_payment' => $request->totalnya,
-            'total_weight' => $total_weight,
-            'shipment_fee' => $request->ongkir,
-            'shipping_status_id' => 1,
-            'payment_status_id' => 1,
-            'user_id' => Auth::user()->id,
-            'address_id' => $address->id,
-            'recipient' => $request->user_name ?: $address->recipient_name,
-            'recipient_address' => $address->address,
-            'recipient_number' => $request->phone_number ?: $address->phone_number,
-            'province' => $address->province ?: 'N/A',
-            'district' => $address->location_line ?: 'N/A',
-            'postal_code' => $address->postal_code ?: '00000',
-            'courier' => $request->kurir,
-            'service' => $request->kurir_name,
-            'etd' => $request->etd ?? '-',
-            'notes' => $request->notes,
-        ]);
+        $shipping = $this->resolveShipping(
+            $address->rajaongkir_destination_id,
+            $total_weight,
+            $request->kurir,
+            $request->kurir_name
+        );
 
-        foreach ($carts as $cart) {
-            PurchasedProduct::create([
-                'purchase_id' => $purchase->id,
-                'product_id' => $cart->product_id,
-                'quantity' => $cart->amount,
-                'size_id' => $cart->size_id,
-                'color_id' => $cart->color_id,
-                'printing_id' => $cart->printing_id,
-                'sub_weight' => $cart->products->product_weight * $cart->amount,
-                'total_order' => $cart->products->product_price * $cart->amount,
-                'product_design' => $cart->link_design ?? '',
-            ]);
+        if ($shipping === null) {
+            Alert::error('Gagal', 'Ongkir tidak valid, silakan pilih ulang kurir');
+            return redirect()->back();
         }
 
-        Cart::where('user_id', Auth::user()->id)->delete();
+        if ((int) $request->ongkir !== $shipping['cost']) {
+            Alert::error('Gagal', 'Ongkir berubah, silakan pilih ulang kurir');
+            return redirect()->back();
+        }
+
+        $code = 'TRX-' . mt_rand(00000, 99999);
+        $total_payment = $subtotal + $shipping['cost'];
+
+        try {
+            $purchase = DB::transaction(function () use ($carts, $code, $request, $address, $total_weight, $shipping, $total_payment) {
+                $purchase = Purchase::create([
+                    'code' => $code,
+                    'total_payment' => $total_payment,
+                    'total_weight' => $total_weight,
+                    'shipment_fee' => $shipping['cost'],
+                    'shipping_status_id' => 1,
+                    'payment_status_id' => 1,
+                    'user_id' => Auth::user()->id,
+                    'address_id' => $address->id,
+                    'recipient' => $request->user_name ?: $address->recipient_name,
+                    'recipient_address' => $address->address,
+                    'recipient_number' => $request->phone_number ?: $address->phone_number,
+                    'province' => $address->province ?: 'N/A',
+                    'district' => $address->location_line ?: 'N/A',
+                    'postal_code' => $address->postal_code ?: '00000',
+                    'courier' => $shipping['courier'],
+                    'service' => $shipping['service'],
+                    'etd' => $shipping['etd'],
+                    'notes' => $request->notes,
+                ]);
+
+                foreach ($carts as $cart) {
+                    PurchasedProduct::create([
+                        'purchase_id' => $purchase->id,
+                        'product_id' => $cart->product_id,
+                        'quantity' => $cart->amount,
+                        'size_id' => $cart->size_id,
+                        'color_id' => $cart->color_id,
+                        'printing_id' => $cart->printing_id,
+                        'sub_weight' => $cart->products->product_weight * $cart->amount,
+                        'total_order' => $cart->products->product_price * $cart->amount,
+                        'product_design' => $cart->link_design ?? '',
+                    ]);
+                }
+
+                // cart baru dihapus kalau keranjang sudah jadi pesanan
+                Cart::where('user_id', Auth::user()->id)->delete();
+
+                return $purchase;
+            });
+        } catch (Exception $e) {
+            \Log::error('Gagal menyimpan pesanan', [
+                'user_id' => Auth::user()->id,
+                'error' => $e->getMessage(),
+            ]);
+            Alert::error('Gagal', 'Pesanan tidak dapat diproses, silakan coba lagi');
+            return redirect()->back();
+        }
 
         // Midtrans Configuration
         Config::$serverKey = config('midtrans.server_key');
@@ -198,12 +249,12 @@ class CartController extends Controller
         $midtrans = [
             'transaction_details' => [
                 'order_id' => $code,
-                'gross_amount' => $request->totalnya,
+                'gross_amount' => $total_payment,
             ],
             'customer_details' => [
-                'first_name' => $request->user_name,
+                'first_name' => $request->user_name ?: $address->recipient_name,
                 'email' => auth()->user()->email,
-                'phone' => $request->phone_number,
+                'phone' => $request->phone_number ?: $address->phone_number,
             ],
             'callbacks' => [
                 'finish' => url('/success'),
@@ -218,8 +269,57 @@ class CartController extends Controller
 
             return redirect($paymentUrl);
         } catch (Exception $e) {
-            echo $e->getMessage();
+            // pesanan sudah ada, pembayaran bisa diulang dari riwayat
+            \Log::error('Snap gagal dibuat', [
+                'order_id' => $code,
+                'error' => $e->getMessage(),
+            ]);
+            Alert::error('Gagal', 'Gagal membuat pembayaran, silakan coba dari riwayat transaksi');
+            return redirect()->route('history');
         }
+    }
+
+    /**
+     * Cocokkan pilihan kurir dengan harga asli dari RajaOngkir.
+     * Balikin null kalau kurir/layanan tidak ada di daftar.
+     */
+    private function resolveShipping($destination, $weight, $courier, $service)
+    {
+        if (!$courier || !$service) {
+            return null;
+        }
+
+        try {
+            $response = Http::withHeaders([
+                'key' => config('rajaongkir.api_key'),
+                'Content-Type' => 'application/x-www-form-urlencoded'
+            ])->asForm()->post('https://rajaongkir.komerce.id/api/v1/calculate/domestic-cost', [
+                'origin' => 17732,
+                'destination' => $destination,
+                'weight' => $weight,
+                'courier' => $courier,
+            ]);
+        } catch (Exception $e) {
+            \Log::error('RajaOngkir gagal dipanggil', ['error' => $e->getMessage()]);
+            return null;
+        }
+
+        if (!$response->successful()) {
+            return null;
+        }
+
+        foreach ($response->json('data', []) as $option) {
+            if ($option['service'] === $service) {
+                return [
+                    'courier' => $courier,
+                    'service' => $option['service'],
+                    'cost' => (int) $option['cost'],
+                    'etd' => $option['etd'] ?? '-',
+                ];
+            }
+        }
+
+        return null;
     }
 
     public function success()
@@ -281,7 +381,6 @@ class CartController extends Controller
                 'order_id' => $notification->order_id,
                 'type' => $notification->payment_type,
                 'fraud' => $notification->fraud_status ?? 'none',
-                'signature_key' => $notification->signature_key ?? 'missing'
             ]);
 
             // Assign ke variable untuk memudahkan 
@@ -295,8 +394,6 @@ class CartController extends Controller
             if ($hashed !== $notification->signature_key) {
                 \Log::error('Invalid signature', [
                     'order_id' => $order_id,
-                    'expected' => $hashed,
-                    'received' => $notification->signature_key
                 ]);
                 return response()->json([
                     'meta' => [
